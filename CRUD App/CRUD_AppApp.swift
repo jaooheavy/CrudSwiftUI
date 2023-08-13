@@ -13,10 +13,8 @@ struct CRUD_AppApp: App {
     
     var body: some Scene {
         WindowGroup {
-            NavigationView {
-                MainView()
-                    .environmentObject(navigationManager)
-            }
+            MainView()
+                .environmentObject(navigationManager)
         }
     }
 }

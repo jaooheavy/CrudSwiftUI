@@ -17,7 +17,7 @@ struct SplashView: View {
             .onAppear {
                 // Simulate some loading process (e.g., data fetching, setup)
                 DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                    navigationManager.navigateTo(screen: .login)
+                    navigationManager.navigateToLogin()
                 }
             }
     }

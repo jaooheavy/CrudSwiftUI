@@ -9,6 +9,7 @@ import SwiftUI
 
 class NavigationManager: ObservableObject {
     @Published var currentScreen: Screen = .splash
+    
     var user: User?
     
     enum Screen {
@@ -18,8 +19,14 @@ class NavigationManager: ObservableObject {
         // Add more screen cases as needed
     }
     
-    func navigateTo(screen: Screen) {
-        currentScreen = screen
+    private func navigateTo(screen: Screen) {
+        withAnimation {
+            currentScreen = screen
+        }
+    }
+    
+    func navigateToLogin() {
+        navigateTo(screen: .login)
     }
     
     func navigateToHome(user: User) {

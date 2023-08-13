@@ -12,12 +12,23 @@ struct HomeView: View {
     
     var body: some View {
         VStack {
-            Text("\(user.name)")
-                .font(.largeTitle)
-                .foregroundColor(.green)
+            ScrollView {
+                VStack(spacing: 20) {
+                    Text("Bem-vindo, \(user.name)!")
+                        .font(.title)
+                        .padding()
+                    
+                    ForEach(0..<10) { index in
+                        Text("Item \(index)")
+                            .padding()
+                            .background(Color.gray.opacity(0.2))
+                            .cornerRadius(10)
+                    }
+                }.frame(maxWidth: .infinity)
+            }
         }
-        .padding()
     }
+
 }
 
 struct HomeView_Previews: PreviewProvider {
