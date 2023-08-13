@@ -11,6 +11,7 @@ struct LoginView: View {
     @StateObject private var viewModel = LoginViewModel()
     @State private var isShowingAlert: Bool = false
     @State private var alertMessage: String = ""
+    @EnvironmentObject var navigationManager: NavigationManager
     
     var body: some View {
         ZStack {
@@ -62,13 +63,11 @@ struct LoginView: View {
         if let result = loginResult {
             switch result {
             case .success(let user):
-                alertMessage = "Login successful! Welcome, \(user.name)"
+                navigationManager.navigateToHome(user: user)
             case .failure(let error):
                 alertMessage = "Login failed: \(error.localizedDescription)"
-            case .empty:
-                return
+                isShowingAlert = true
             }
-            isShowingAlert = true // Show the alert after login attempt
         }
     }
 }

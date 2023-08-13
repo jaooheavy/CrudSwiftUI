@@ -10,7 +10,7 @@ import Foundation
 class LoginViewModel: ObservableObject {
     @Published var credentials: Credentials = Credentials()
     @Published var isLoggingIn: Bool = false
-    @Published var loginResult: Result<User, LoginError> = Result.empty
+    @Published var loginResult: Result<User, LoginError>? = nil
     
     struct Credentials {
         var email: String = ""
@@ -29,11 +29,6 @@ class LoginViewModel: ObservableObject {
             }
         }
     }
-}
-
-struct User {
-    let name: String
-    // Other user properties
 }
 
 enum LoginError: Error {

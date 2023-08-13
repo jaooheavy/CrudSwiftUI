@@ -12,10 +12,14 @@ struct MainView: View {
     
     var body: some View {
         switch navigationManager.currentScreen {
-            case .splash:
-                SplashView()
-            case .login:
-                LoginView()
+        case .splash:
+            SplashView()
+        case .login:
+            LoginView()
+        case .home:
+            if let user = navigationManager.user {
+                HomeView(user: user)
+            }
         }
     }
 }
